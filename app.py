@@ -3,7 +3,7 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['POST'])
 def index():
     q_response = 'This is a sample response from your webhook!'
     resp = {'speech': q_response, 'displayText': q_response}
