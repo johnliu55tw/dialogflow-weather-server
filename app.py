@@ -1,4 +1,5 @@
 import logging
+from pprint import pformat
 from flask import Flask, jsonify, request
 import utils
 
@@ -14,6 +15,7 @@ WEATHER_API_KEY = '337b098c340f425985871125180403'
 def index():
     try:
         json_body = request.get_json()
+        logging.debug('Request JSON: \n' + pformat(json_body))
         geo_city = json_body['result']['parameters']['geo-city']
         if not geo_city:
             raise ValueError('You must provide location!')
